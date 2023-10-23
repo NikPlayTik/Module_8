@@ -15,14 +15,27 @@ using System.Windows.Shapes;
 
 namespace Module_8
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddContact(object sender, RoutedEventArgs e)
+        {
+            AddWindow addWindow = new AddWindow();
+            addWindow.ShowDialog();
+        }
+
+        private void EditMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

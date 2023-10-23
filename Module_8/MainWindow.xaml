@@ -22,21 +22,27 @@
         <!-- Заголовок -->
         <TextBlock Text="Список контактов" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,0" FontSize="20"/>
 
-        <!-- ListView для отображения списка контактов -->
         <ListView Name="contactListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="ФИО" DisplayMemberBinding="{Binding FullName}" Width="200"/>
-                    <GridViewColumn Header="Номер телефона" DisplayMemberBinding="{Binding PhoneNumber}" Width="150"/>
-                    <GridViewColumn Header="Электронная почта" DisplayMemberBinding="{Binding Email}" Width="200"/>
-                    <GridViewColumn Header="Организация" DisplayMemberBinding="{Binding Organization}" Width="150"/>
+                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding FullName}" Width="100"/>
+                    <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding PhoneNumber}" Width="150"/>
+                    <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding Email}" Width="200"/>
+                    <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding Organization}" Width="150" />
                 </GridView>
             </ListView.View>
-        </ListView>
 
+            <!-- Добавление контекстного меню -->
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>
+                    <MenuItem Header="Удалить" Click="DeleteMenuItem_Click"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        
         <!-- Кнопки для управления контактами -->
-        <Button Content="Добавить" Grid.Column="0" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" Margin="10" />
-        <Button Content="Редактировать" Grid.Column="1" Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Center" Margin="10"/>
-        <Button Content="Удалить" Grid.Column="3" Grid.Row="2" Width="100" Height="30" HorizontalAlignment="Center" Margin="10"/>
+        <Button Content="Добавить" Grid.Column="1" Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Center" Margin="10" Click="AddContact"/>
+
     </Grid>
 </Window>

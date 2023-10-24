@@ -8,9 +8,9 @@ namespace Module_8
 {
     public class ContactData
     {
-        public string fullName;
-        public string numberPhone;
-        public string email;
-        public string organization;
+        public string fullName { get; set; }
+        public string numberPhone { get; set; }
+        public string email { get; set; }
+        public string organization { get; set; }
     }
 }

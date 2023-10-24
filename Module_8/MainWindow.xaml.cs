@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,13 @@ namespace Module_8
 {
     public partial class MainWindow : Window
     {
-        private ObservableCollection<ContactData> contactsCollection = new ObservableCollection<ContactData>();
+        public ObservableCollection<ContactData> contactsCollection = new ObservableCollection<ContactData>();
+        DataBase dataBase = new DataBase();
         public MainWindow()
         {
             InitializeComponent();
             contactListView.ItemsSource = contactsCollection; // коллекция контактов как источник данных для ListView
+            dataBase.LoadInitialData();
         }
 
         private void AddContact(object sender, RoutedEventArgs e)

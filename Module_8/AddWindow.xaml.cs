@@ -31,7 +31,8 @@ namespace Module_8
                 email = emailTextBox.Text,
                 organization = organizationTextBox.Text
             };
-
+            MessageBox.Show($"ФИО: {newContact.fullName}\nТелефон: {newContact.numberPhone}\n" +
+                $"Электронная почта: {newContact.email}\nОрганизация: {newContact.organization}");
             ContactSaved?.Invoke(this, newContact);
 
             Close(); // Закрыть окно после сохранения

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Module_8"
         mc:Ignorable="d"
-        MinHeight="200" MinWidth="450" MaxHeight="200" MaxWidth="450" WindowStyle="ToolWindow">
+        MinHeight="200" MinWidth="450" MaxHeight="200" MaxWidth="450" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
@@ -36,6 +36,6 @@
         <TextBox Name="organizationTextBox" Width="300" Height="20" Grid.Row="4" Grid.Column="1"/>
 
         <!-- Кнопка для сохранения контакта -->
-        <Button Content="Сохранить" Name="saveButton" Width="100" Height="30" HorizontalAlignment="Center" Margin="0,20" Grid.Row="8"/>
+        <Button Content="Сохранить" Name="saveButton" Width="100" Height="30" HorizontalAlignment="Center" Margin="0,20" Grid.Row="8" Click="SaveButton"/>
     </Grid>
 </Window>

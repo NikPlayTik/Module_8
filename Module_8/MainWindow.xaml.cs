@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +19,24 @@ namespace Module_8
 {
     public partial class MainWindow : Window
     {
+        private ObservableCollection<ContactData> contactsCollection = new ObservableCollection<ContactData>();
         public MainWindow()
         {
             InitializeComponent();
+            contactListView.ItemsSource = contactsCollection; // коллекция контактов как источник данных для ListView
         }
 
         private void AddContact(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();
+            addWindow.ContactSaved += AddWindow_ContactSaved;
             addWindow.ShowDialog();
+        }
+
+        private void AddWindow_ContactSaved(object sender, ContactData contact)
+        {
+            contactsCollection.Add(contact);
+            contactListView.Items.Refresh();
         }
 
         private void EditMenuItem_Click(object sender, RoutedEventArgs e)

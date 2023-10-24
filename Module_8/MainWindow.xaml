@@ -25,10 +25,10 @@
         <ListView Name="contactListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding FullName}" Width="100"/>
-                    <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding PhoneNumber}" Width="150"/>
-                    <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding Email}" Width="200"/>
-                    <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding Organization}" Width="150" />
+                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding fullName}" Width="100"/>
+                    <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding numberPhone}" Width="150"/>
+                    <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding email}" Width="200"/>
+                    <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding organization}" Width="150" />
                 </GridView>
             </ListView.View>
 

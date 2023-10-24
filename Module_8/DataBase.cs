@@ -12,7 +12,13 @@ namespace Module_8
     public class DataBase
     {
         SqlConnection sqlConnection = new SqlConnection(@"Data source=DESKTOP-VM99VUJ;Initial Catalog=ContactDataBase;Integrated Security=True");
-        
+        MainWindow window;
+
+        public DataBase(MainWindow window)
+        {
+            this.window = window;
+        }
+
         public void openConnection()
         {
             if (sqlConnection.State == System.Data.ConnectionState.Closed)
@@ -90,10 +96,9 @@ namespace Module_8
             {
                 closeConnection();
             }
-            MainWindow mainWindow = new MainWindow();
             // Присвоить значения contacts коллекции contactsCollection
-            mainWindow.contactsCollection = new ObservableCollection<ContactData>(contacts);
-            mainWindow.contactListView.ItemsSource = mainWindow.contactsCollection;
+            window.contactsCollection = new ObservableCollection<ContactData>(contacts);
+            window.contactListView.ItemsSource = window.contactsCollection;
         }
     }
 }

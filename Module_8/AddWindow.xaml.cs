@@ -18,8 +18,10 @@ namespace Module_8
     public partial class AddWindow : Window
     {
         public event EventHandler<ContactData> ContactSaved;
-        public AddWindow()
+        MainWindow window;
+        public AddWindow(MainWindow window)
         {
+            this.window = window;
             InitializeComponent();
         }
 
@@ -48,7 +50,7 @@ namespace Module_8
                 return;
             }
 
-            DataBase database = new DataBase();
+            DataBase database = new DataBase(window);
             bool inserted = database.InsertContact(fullName, numberPhone, email, organization);
 
             if (inserted)

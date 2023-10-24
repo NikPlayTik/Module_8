@@ -21,17 +21,18 @@ namespace Module_8
     public partial class MainWindow : Window
     {
         public ObservableCollection<ContactData> contactsCollection = new ObservableCollection<ContactData>();
-        DataBase dataBase = new DataBase();
+        DataBase dataBase;
         public MainWindow()
         {
             InitializeComponent();
+            dataBase = new DataBase(this);
             contactListView.ItemsSource = contactsCollection; // коллекция контактов как источник данных для ListView
             dataBase.LoadInitialData();
         }
 
         private void AddContact(object sender, RoutedEventArgs e)
         {
-            AddWindow addWindow = new AddWindow();
+            AddWindow addWindow = new AddWindow(this);
             addWindow.ContactSaved += AddWindow_ContactSaved;
             addWindow.ShowDialog();
         }
@@ -44,12 +45,12 @@ namespace Module_8
 
         private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

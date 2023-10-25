@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MaterialDesignThemes.Wpf;
+using System.Windows.Media.Effects;
 
 namespace Module_8
 {
@@ -36,34 +38,38 @@ namespace Module_8
             addWindow.ContactSaved += AddWindow_ContactSaved;
             addWindow.ShowDialog();
         }
-
         private void AddWindow_ContactSaved(object sender, ContactData contact)
         {
             contactsCollection.Add(contact);
             contactListView.Items.Refresh();
         }
-
         private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            // Проверьте, выбран ли контакт для редактирования
             if (contactListView.SelectedItem != null)
             {
-                // Получите выбранный контакт
                 ContactData selectedContact = (ContactData)contactListView.SelectedItem;
-
-                // Откройте окно редактирования и передайте выбранный контакт
                 EditWindow editWindow = new EditWindow(selectedContact, dataBase);
                 editWindow.ShowDialog();
 
-                // Обновите отображение списка контактов после редактирования
-                contactListView.Items.Refresh();
+                // Обновление данных в contactsCollection после редактирования
+                if (editWindow.ContactUpdated)
+                {
+                    // Найдите индекс выбранного контакта в contactsCollection
+                    int index = contactsCollection.IndexOf(selectedContact);
+                    if (index != -1)
+                    {
+                        // Замените выбранный контакт обновленным контактом
+                        contactsCollection[index] = editWindow.UpdatedContact;
+                        // Уведомьте ListView об изменениях
+                        contactListView.Items.Refresh();
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Пожалуйста, выберите контакт для редактирования.");
             }
         }
-
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
 

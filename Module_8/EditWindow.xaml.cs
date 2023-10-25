@@ -40,6 +40,11 @@ namespace Module_8
             organizationTextBox.Text = contactToEdit.organization;
         }
 
+        private bool contactUpdated;
+        private ContactData updatedContact;
+        public bool ContactUpdated => contactUpdated;
+        public ContactData UpdatedContact => updatedContact;
+
         private void SaveButton(object sender, RoutedEventArgs e)
         {
             string fullName = fullNameTextBox.Text;
@@ -79,14 +84,15 @@ namespace Module_8
 
             if (updated)
             {
-                MessageBox.Show("Контакт успешно обновлен");
+                MessageBox.Show("Контакт успешно обновлен в базе данных");
+                contactUpdated = true;
+                this.updatedContact = updatedContact;
             }
             else
             {
-                MessageBox.Show("Произошла ошибка при обновлении контакта");
+                MessageBox.Show("Произошла ошибка при обновлении контакта в базе данных");
             }
-
-            Close(); // Закрыть окно после сохранения
+            Close();
         }
     }
 }

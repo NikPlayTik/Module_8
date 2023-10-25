@@ -45,7 +45,23 @@ namespace Module_8
 
         private void EditMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            // Проверьте, выбран ли контакт для редактирования
+            if (contactListView.SelectedItem != null)
+            {
+                // Получите выбранный контакт
+                ContactData selectedContact = (ContactData)contactListView.SelectedItem;
 
+                // Откройте окно редактирования и передайте выбранный контакт
+                EditWindow editWindow = new EditWindow(selectedContact, dataBase);
+                editWindow.ShowDialog();
+
+                // Обновите отображение списка контактов после редактирования
+                contactListView.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите контакт для редактирования.");
+            }
         }
 
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)

@@ -8,6 +8,7 @@ namespace Module_8
 {
     public class ContactData
     {
+        public int Id { get; set; }
         public string fullName { get; set; }
         public string numberPhone { get; set; }
         public string email { get; set; }

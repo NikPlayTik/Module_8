@@ -50,7 +50,7 @@ namespace Module_8
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -100,5 +100,33 @@ namespace Module_8
             window.contactsCollection = new ObservableCollection<ContactData>(contacts);
             window.contactListView.ItemsSource = window.contactsCollection;
         }
+        public bool UpdateContact(ContactData contact)
+        {
+            try
+            {
+                openConnection();
+                string query = "UPDATE ContactDataBase SET FullName = @fullName, NumberPhone = @numberPhone, Email = @email, Organization = @organization WHERE ID = @id";
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@id", contact.Id);
+                    command.Parameters.AddWithValue("@fullName", contact.fullName);
+                    command.Parameters.AddWithValue("@numberPhone", contact.numberPhone);
+                    command.Parameters.AddWithValue("@email", contact.email);
+                    command.Parameters.AddWithValue("@organization", contact.organization);
+
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                closeConnection();
+            }
+        }
+
     }
 }

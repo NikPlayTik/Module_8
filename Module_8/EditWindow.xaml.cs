@@ -40,7 +40,6 @@ namespace Module_8
             organizationTextBox.Text = contactToEdit.organization;
         }
 
-        // Обработчик нажатия кнопки "Сохранить" в EditWindow
         private void SaveButton(object sender, RoutedEventArgs e)
         {
             string fullName = fullNameTextBox.Text;

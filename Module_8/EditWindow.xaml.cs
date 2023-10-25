@@ -32,6 +32,15 @@ namespace Module_8
 
         }
 
+        public void InitializeForEdit(ContactData contactToEdit)
+        {
+            fullNameTextBox.Text = contactToEdit.fullName;
+            phoneTextBox.Text = contactToEdit.numberPhone;
+            emailTextBox.Text = contactToEdit.email;
+            organizationTextBox.Text = contactToEdit.organization;
+        }
+
+        // Обработчик нажатия кнопки "Сохранить" в EditWindow
         private void SaveButton(object sender, RoutedEventArgs e)
         {
             string fullName = fullNameTextBox.Text;
@@ -57,22 +66,25 @@ namespace Module_8
                 return;
             }
 
-            // Обновите поля контакта, который нужно отредактировать
-            contactToEdit.fullName = fullName;
-            contactToEdit.numberPhone = numberPhone;
-            contactToEdit.email = email;
-            contactToEdit.organization = organization;
+            // Создайте экземпляр ContactData с обновленными данными
+            ContactData updatedContact = new ContactData
+            {
+                fullName = fullName,
+                numberPhone = numberPhone,
+                email = email,
+                organization = organization
+            };
 
-            // Выполните запрос на обновление в базе данных
-            bool updated = dataBase.UpdateContact(contactToEdit);
+            // Отправьте обновленный контакт в базу данных для обновления
+            bool updated = dataBase.UpdateContact(contactToEdit, updatedContact);
 
             if (updated)
             {
-                MessageBox.Show("Контакт успешно обновлен в базе данных");
+                MessageBox.Show("Контакт успешно обновлен");
             }
             else
             {
-                MessageBox.Show("Произошла ошибка при обновлении контакта в базе данных");
+                MessageBox.Show("Произошла ошибка при обновлении контакта");
             }
 
             Close(); // Закрыть окно после сохранения

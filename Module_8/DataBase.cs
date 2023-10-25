@@ -100,26 +100,32 @@ namespace Module_8
             window.contactsCollection = new ObservableCollection<ContactData>(contacts);
             window.contactListView.ItemsSource = window.contactsCollection;
         }
-        public bool UpdateContact(ContactData contact)
+        public bool UpdateContact(ContactData existingContact, ContactData updatedContact)
         {
             try
             {
                 openConnection();
-                string query = "UPDATE ContactDataBase SET FullName = @fullName, NumberPhone = @numberPhone, Email = @email, Organization = @organization WHERE ID = @id";
+                string query = "UPDATE ContactDataBase SET FullName = @FullName, NumberPhone = @NumberPhone, Email = @Email, Organization = @Organization WHERE FullName = @ExistingFullName AND NumberPhone = @ExistingNumberPhone";
+
                 using (SqlCommand command = new SqlCommand(query, sqlConnection))
                 {
-                    command.Parameters.AddWithValue("@id", contact.Id);
-                    command.Parameters.AddWithValue("@fullName", contact.fullName);
-                    command.Parameters.AddWithValue("@numberPhone", contact.numberPhone);
-                    command.Parameters.AddWithValue("@email", contact.email);
-                    command.Parameters.AddWithValue("@organization", contact.organization);
+                    command.Parameters.AddWithValue("@FullName", updatedContact.fullName);
+                    command.Parameters.AddWithValue("@NumberPhone", updatedContact.numberPhone);
+                    command.Parameters.AddWithValue("@Email", updatedContact.email);
+                    command.Parameters.AddWithValue("@Organization", updatedContact.organization);
+
+                    // Передайте параметры для условия WHERE
+                    command.Parameters.AddWithValue("@ExistingFullName", existingContact.fullName);
+                    command.Parameters.AddWithValue("@ExistingNumberPhone", existingContact.numberPhone);
 
                     command.ExecuteNonQuery();
                 }
+
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"Произошла ошибка при обновлении контакта: {ex.Message}");
                 return false;
             }
             finally
@@ -127,6 +133,5 @@ namespace Module_8
                 closeConnection();
             }
         }
-
     }
 }

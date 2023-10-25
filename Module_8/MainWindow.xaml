@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Module_8"
         mc:Ignorable="d"
         Title="Контакты" MinWidth="750" MinHeight="350" MaxWidth="750" MaxHeight="350">
-    
+
     <Grid>
         <!-- Определение колонок и строк для масштабирования -->
         <Grid.ColumnDefinitions>

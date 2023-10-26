@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Module_8"
         mc:Ignorable="d"
-        Title="Контакты" MinWidth="750" MinHeight="350" MaxWidth="750" MaxHeight="350">
+        Title="Контакты" MinWidth="775" MinHeight="350" MaxWidth="775" MaxHeight="350">
 
-    <Grid>
+    <Grid Background="#E53DDDBA">
         <!-- Определение колонок и строк для масштабирования -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -23,10 +23,14 @@
         <!-- Заголовок -->
         <TextBlock Text="Список контактов" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,0" FontSize="20"/>
 
-        <ListView Name="contactListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
+        <Border CornerRadius="10" Background="LightGreen" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
+            <Border.Effect>
+                <DropShadowEffect Color="DarkBlue" Direction="320" ShadowDepth="15" BlurRadius="30" Opacity="0.4"/>
+            </Border.Effect>
+            <ListView Name="contactListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding fullName}" Width="170"/>
+                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding fullName}" Width="180"/>
                     <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding numberPhone}" Width="170"/>
                     <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding email}" Width="200"/>
                     <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding organization}" Width="150" />
@@ -34,13 +38,14 @@
             </ListView.View>
 
             <!-- Добавление контекстного меню -->
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>
-                    <MenuItem Header="Удалить" Click="DeleteMenuItem_Click"/>
-                </ContextMenu>
-            </ListView.ContextMenu>
-        </ListView>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>
+                        <MenuItem Header="Удалить" Click="DeleteMenuItem_Click"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+        </Border>
         
         <!-- Кнопки для управления контактами -->
         <Button Content="Добавить" Grid.Column="1" Grid.Row="3" Width="100" Height="30" HorizontalAlignment="Center" Margin="10" Click="AddContact" Background="#FF2EBE92" BorderBrush="#FF2EBE92"/>

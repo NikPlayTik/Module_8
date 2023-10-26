@@ -70,13 +70,7 @@ namespace Module_8
                 organization = organization
             };
 
-            // Далее можно добавить проверки для других полей
-
-            MessageBox.Show($"ФИО: {newContact.fullName}\nТелефон: {newContact.numberPhone}\n" +
-                $"Электронная почта: {newContact.email}\nОрганизация: {newContact.organization}");
-
             ContactSaved?.Invoke(this, newContact);
-
             Close(); // Закрыть окно после сохранения
         }
     }

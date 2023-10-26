@@ -25,19 +25,17 @@
 
         <Border CornerRadius="10" Background="LightGreen" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
             <Border.Effect>
-                <DropShadowEffect Color="DarkBlue" Direction="320" ShadowDepth="15" BlurRadius="30" Opacity="0.4"/>
+                <DropShadowEffect Color="DarkGreen" Direction="320" ShadowDepth="15" BlurRadius="30" Opacity="0.4"/>
             </Border.Effect>
             <ListView Name="contactListView" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Margin="10" VerticalAlignment="Stretch">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding fullName}" Width="180"/>
-                    <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding numberPhone}" Width="170"/>
-                    <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding email}" Width="200"/>
-                    <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding organization}" Width="150" />
-                </GridView>
-            </ListView.View>
-
-            <!-- Добавление контекстного меню -->
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="fullNameGridColumn" Header="ФИО" DisplayMemberBinding="{Binding fullName}" Width="180"/>
+                        <GridViewColumn x:Name="phoneGridColumn" Header="Номер телефона" DisplayMemberBinding="{Binding numberPhone}" Width="170"/>
+                        <GridViewColumn x:Name="emailGridColumn" Header="Электронная почта" DisplayMemberBinding="{Binding email}" Width="200"/>
+                        <GridViewColumn x:Name="organizationGridColumn" Header="Организация" DisplayMemberBinding="{Binding organization}" Width="150" />
+                    </GridView>
+                </ListView.View>
                 <ListView.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Редактировать" Click="EditMenuItem_Click"/>

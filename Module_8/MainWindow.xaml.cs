@@ -72,7 +72,34 @@ namespace Module_8
         }
         private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            if (contactListView.SelectedItem != null)
+            {
+                ContactData selectedContact = (ContactData)contactListView.SelectedItem;
 
+                // Отображение диалогового окна подтверждения удаления
+                MessageBoxResult result = MessageBox.Show("Вы уверены, что хотите удалить выбранный контакт?", "Подтверждение удаления", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    // Удаление контакта из базы данных
+                    bool deleted = dataBase.DeleteContact(selectedContact);
+
+                    if (deleted)
+                    {
+                        // Удаление контакта из коллекции и обновление отображения
+                        contactsCollection.Remove(selectedContact);
+                        contactListView.Items.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Произошла ошибка при удалении контакта из базы данных.");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите контакт для удаления.");
+            }
         }
     }
 }

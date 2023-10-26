@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Module_8"
         mc:Ignorable="d"
         MinHeight="200" MinWidth="470" MaxHeight="220" MaxWidth="470" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Background="#FF704CEB">
         <Grid.RowDefinitions>
             <RowDefinition Height="30px"/>
             <RowDefinition Height="Auto"/>
@@ -16,26 +16,26 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130px"/>
+            <ColumnDefinition Width="140px"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!-- Label и TextBox для ФИО -->
-        <Label Content="ФИО:" Grid.Row="0"/>
-        <TextBox Name="fullNameTextBox" Width="300" Height="30" Grid.Row="0" Grid.Column="1"/>
+        <Label Content="ФИО:" Grid.Row="0" Foreground="White" FontFamily="Arial Bold" Margin="10, 10, 1, 1"/>
+        <TextBox Name="fullNameTextBox" Width="300" Height="30" Grid.Row="0" Grid.Column="1" Foreground="White" FontFamily="Arial Bold"/>
 
         <!-- Label и TextBox для Номера телефона -->
-        <Label Content="Номер телефона:" Grid.Row="2"/>
-        <TextBox Name="phoneTextBox" Width="300" Height="30" Grid.Row="2" Grid.Column="1"/>
+        <Label Content="Номер телефона:" Grid.Row="2" Foreground="White" FontFamily="Arial Bold" Margin="10, 10, 1, 1"/>
+        <TextBox Name="phoneTextBox" Width="300" Height="30" Grid.Row="2" Grid.Column="1" Foreground="White" FontFamily="Arial Bold"/>
 
         <!-- Label и TextBox для Электронной почты -->
-        <Label Content="Электронная почта:" Grid.Row="3"/>
-        <TextBox Name="emailTextBox" Width="300" Height="30" Grid.Row="3" Grid.Column="1"/>
+        <Label Content="Электронная почта:" Grid.Row="3" Foreground="White" FontFamily="Arial Bold" Margin="10, 10, 1, 1"/>
+        <TextBox Name="emailTextBox" Width="300" Height="30" Grid.Row="3" Grid.Column="1" Foreground="White" FontFamily="Arial Bold"/>
 
         <!-- Label и TextBox для Организации -->
-        <Label Content="Организация:" Grid.Row="4"/>
-        <TextBox Name="organizationTextBox" Width="300" Height="30" Grid.Row="4" Grid.Column="1"/>
+        <Label Content="Организация:" Grid.Row="4" Foreground="White" FontFamily="Arial Bold" Margin="10, 10, 1, 1"/>
+        <TextBox Name="organizationTextBox" Width="300" Height="30" Grid.Row="4" Grid.Column="1" Foreground="White" FontFamily="Arial Bold"/>
 
         <!-- Кнопка для сохранения контакта -->
-        <Button Content="Сохранить" Name="saveButton" Width="120" Height="30" HorizontalAlignment="Center" Margin="0,20" Grid.Row="8" Click="SaveButton"/>
+        <Button Content="Сохранить" Name="saveButton" Width="110" Height="30" HorizontalAlignment="Center" Margin="0,20" Grid.Row="8" Click="SaveButton"/>
     </Grid>
 </Window>

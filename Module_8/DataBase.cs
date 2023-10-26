@@ -100,6 +100,41 @@ namespace Module_8
             window.contactsCollection = new ObservableCollection<ContactData>(contacts);
             window.contactListView.ItemsSource = window.contactsCollection;
         }
+
+        public bool DeleteContact(ContactData contact)
+        {
+            try
+            {
+                openConnection();
+                string query = "DELETE FROM ContactDataBase WHERE FullName = @FullName AND NumberPhone = @NumberPhone";
+                using (SqlCommand command = new SqlCommand(query, sqlConnection))
+                {
+                    command.Parameters.AddWithValue("@FullName", contact.fullName);
+                    command.Parameters.AddWithValue("@NumberPhone", contact.numberPhone);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        return true; // Контакт успешно удален
+                    }
+                    else
+                    {
+                        return false; // Контакт не найден
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при удалении контакта: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                closeConnection();
+            }
+        }
+
         public bool UpdateContact(ContactData existingContact, ContactData updatedContact)
         {
             try
